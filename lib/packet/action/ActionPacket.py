@@ -16,5 +16,5 @@ class ActionPacket(Packet):
     def get_actor(self):
         return self.actor
 
-    def __call(self):
+    def __call__(self):
         pass

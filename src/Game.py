@@ -1,16 +1,20 @@
 from lib.manager.EntityManager import EntityManager
+from src.entity.Player import Player
 import pygame
 
 class Game():
 
     def __init__(self):
         self.entity_manager = EntityManager()
-        self.player = self.entity_manager.create_player()
+        self.player = Player()
         self.running = True
         self.create_window()
 
     def is_running(self):
         return self.running
+
+    def set_running(self, value):
+        self.running = value
 
     def create_window(self):
         pygame.display.set_caption("Astral-Fight | Shoot the aliens !")
@@ -25,7 +29,7 @@ class Game():
 
     def display_projectiles(self):
         for projectiles in self.entity_manager.get_projectiles():
-            if projectiles.getY() > 0:
+            if projectiles.get_position().get_y() > 0:
                 self.screen.blit(projectiles.image, projectiles.rect)
             else:
                 self.entity_manager.projectiles.remove(projectiles)
@@ -36,3 +40,10 @@ class Game():
 
     def update_screen(self):
         pygame.display.flip()
+
+    def update_all(self):
+        self.display_screen()
+        self.display_player()
+        self.display_projectiles()
+        self.display_aliens()
+        self.update_screen()

@@ -1,5 +1,4 @@
 from lib.packet.action.MoveActionPacket import MoveActionPacket
-from lib.manager.PacketManager import emit_packet
 from lib.position.Vector2 import Vector2
 import pygame
 
@@ -10,6 +9,7 @@ class Entity (pygame.sprite.Sprite):
     ENTITY_TYPE_PROJECTILE = 2
 
     def __init__(self, type, image_path):
+        pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
         self.type = type
@@ -28,4 +28,4 @@ class Entity (pygame.sprite.Sprite):
         self.rect.y = vec2.get_y()
 
     def move(self, vector):
-        emit_packet(MoveActionPacket(self, vector))
+        MoveActionPacket(self, vector).__call__()

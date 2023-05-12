@@ -9,5 +9,5 @@ class Packet():
         return self.type
 
     # decode the packet
-    def __call(self):
+    def __call__(self):
         pass

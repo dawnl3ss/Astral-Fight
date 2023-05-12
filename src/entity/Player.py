@@ -1,5 +1,8 @@
-from lib.entity.Entity import Entity
+from lib.packet.action.ShootActionPacket import ShootActionPacket
+from lib.packet.action.MoveActionPacket import MoveActionPacket
 from lib.position.Vector2 import Vector2
+from lib.entity.Entity import Entity
+
 
 class Player(Entity):
 
@@ -18,3 +21,12 @@ class Player(Entity):
 
     def get_velocity(self):
         return self.velocity
+
+    def move(self, movement):
+        if movement == '0xF':
+            MoveActionPacket(self, Vector2(self.get_velocity(), 0)).__call__();
+        elif movement == '0xB':
+            MoveActionPacket(self, Vector2(-self.get_velocity(), 0)).__call__();
+
+    def shoot(self):
+        ShootActionPacket(self).__call__();

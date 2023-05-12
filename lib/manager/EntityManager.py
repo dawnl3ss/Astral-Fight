@@ -1,5 +1,3 @@
-from src.entity.Player import Player
-
 class EntityManager():
     # Liste de tous les Projectiles
     projectiles = []
@@ -12,6 +10,3 @@ class EntityManager():
 
     def get_aliens(self):
         return self.aliens
-
-    def create_player(self):
-        return Player()
