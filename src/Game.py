@@ -1,4 +1,5 @@
 from lib.manager.EntityManager import EntityManager
+from lib.manager.TaskManager import TaskManager
 from src.entity.Player import Player
 import pygame
 
@@ -6,6 +7,7 @@ class Game():
 
     def __init__(self):
         self.entity_manager = EntityManager()
+        self.task_manager = TaskManager()
         self.player = Player()
         self.running = True
         self.create_window()
@@ -28,18 +30,21 @@ class Game():
         self.screen.blit(self.player.image, self.player.rect)
 
     def display_projectiles(self):
-        for projectiles in self.entity_manager.get_projectiles():
+        for projectiles in list(self.entity_manager.get_projectiles().values()):
             if projectiles.get_position().get_y() > 0:
                 self.screen.blit(projectiles.image, projectiles.rect)
             else:
-                self.entity_manager.projectiles.remove(projectiles)
+                del self.entity_manager.projectiles[projectiles.get_id()]
 
     def display_aliens(self):
-        for aliens in self.entity_manager.get_aliens():
+        for aliens in self.entity_manager.get_aliens().values():
             self.screen.blit(aliens.image, aliens.rect)
 
     def update_screen(self):
         pygame.display.flip()
+
+    def update_tasks(self):
+        self.task_manager.do_tasks()
 
     def update_all(self):
         self.display_screen()
@@ -47,3 +52,4 @@ class Game():
         self.display_projectiles()
         self.display_aliens()
         self.update_screen()
+        self.update_tasks()

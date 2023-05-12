@@ -10,4 +10,5 @@ class ShootActionPacket(ActionPacket):
 
     def __call__(self):
         projectile = Projectile(self.get_actor().get_position().add(Vector2(23, -20)))
-        EntityManager().projectiles.append(projectile)
+        EntityManager().projectiles[projectile.get_id()] = projectile
+        projectile.start_move_task()

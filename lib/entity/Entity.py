@@ -1,6 +1,9 @@
 from lib.packet.action.MoveActionPacket import MoveActionPacket
 from lib.position.Vector2 import Vector2
+from src.maths.Calcul import Calcul
 import pygame
+
+
 
 class Entity (pygame.sprite.Sprite):
 
@@ -10,6 +13,7 @@ class Entity (pygame.sprite.Sprite):
 
     def __init__(self, type, image_path):
         pygame.sprite.Sprite.__init__(self)
+        self.id = Calcul().rand(0, 9999999999)
         self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
         self.type = type
@@ -19,6 +23,9 @@ class Entity (pygame.sprite.Sprite):
 
     def get_image(self):
         return self.image
+
+    def get_id(self):
+        return self.id
 
     def get_position(self):
         return Vector2(self.rect.x, self.rect.y)

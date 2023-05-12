@@ -8,7 +8,6 @@ def main():
 
     while game.is_running():
         game.update_all()
-        print(str(game.entity_manager.projectiles))
 
         # Si le joueur a fermé la fenetre
         for event in pygame.event.get():

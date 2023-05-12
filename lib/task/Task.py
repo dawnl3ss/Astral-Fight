@@ -1,12 +1,14 @@
 from src.maths.Calcul import Calcul
+from lib.task.Pool import Pool
 
-class Task():
+class Task(Pool):
 
     task_list = []
 
     def __init__(self):
-        self.id = Calcul.rand(0, 9999999999999)
+        self.id = Calcul().rand(0, 9999999999999)
         self.task_list.append(self.id)
+        self.add(self)
 
     def remove_task(self, id):
         if id in self.task_list:

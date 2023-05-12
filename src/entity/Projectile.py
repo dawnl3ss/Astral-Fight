@@ -1,5 +1,5 @@
-from lib.entity.Entity import Entity, pygame
-from lib.position.Vector2 import Vector2
+from lib.entity.Entity import Entity
+from src.tasks.ProjectileMoveTask import ProjectileMoveTask
 
 class Projectile(Entity):
 
@@ -14,3 +14,7 @@ class Projectile(Entity):
 
     def get_velocity(self):
         return self.velocity
+
+    def start_move_task(self):
+        task = ProjectileMoveTask(self)
+        task.on_run()

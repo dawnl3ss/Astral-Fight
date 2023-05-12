@@ -1,9 +1,10 @@
 class EntityManager():
+
     # Liste de tous les Projectiles
-    projectiles = []
+    projectiles = {}
 
     # Liste de tous les Aliens
-    aliens = []
+    aliens = {}
 
     def get_projectiles(self):
         return self.projectiles
