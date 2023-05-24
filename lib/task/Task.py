@@ -15,7 +15,7 @@ class Task(Pool):
             self.task_list.remove(id)
 
     def is_remove(self, id):
-        return id in self.task_list
+        return not id in self.task_list
 
     def on_run(self):
         pass

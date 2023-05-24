@@ -8,7 +8,7 @@ class Player(Entity):
 
     def __init__(self):
         super().__init__(self.ENTITY_TYPE_PLAYER, "src/assets/player.png")
-        self.set_position(Vector2(100, 650))
+        self.set_position(Vector2(650, 650))
         self.health = 100
         self.damage = 20
         self.velocity = 20

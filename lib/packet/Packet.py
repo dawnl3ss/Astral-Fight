@@ -1,6 +1,7 @@
 class Packet():
 
     PACKET_TYPE_ACTION = 0
+    PACKET_TYPE_ENTITY = 1
 
     def __init__(self, type):
         self.type = type

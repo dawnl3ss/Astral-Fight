@@ -1,4 +1,5 @@
 from lib.packet.action.MoveActionPacket import MoveActionPacket
+from lib.packet.entity.SpawnEntityPacket import SpawnEntityPacket
 from src.Game import Game
 import pygame
 
@@ -21,6 +22,7 @@ def main():
                     game.player.move('0xB')
                 elif event.key == pygame.K_SPACE:
                     game.player.shoot()
+                    SpawnEntityPacket().__call__();
 
 if __name__ == "__main__":
     main()

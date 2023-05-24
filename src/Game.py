@@ -31,7 +31,8 @@ class Game():
 
     def display_projectiles(self):
         for projectiles in list(self.entity_manager.get_projectiles().values()):
-            if projectiles.get_position().get_y() > 0:
+            if projectiles.get_position().get_y() >= 0:
+                print(projectiles.get_position().get_y())
                 self.screen.blit(projectiles.image, projectiles.rect)
             else:
                 del self.entity_manager.projectiles[projectiles.get_id()]
