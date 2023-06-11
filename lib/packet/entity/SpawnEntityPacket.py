@@ -7,7 +7,7 @@ from src.entity.Alien import Alien
 class SpawnEntityPacket(EntityPacket):
 
     def __init__(self):
-        super().__init__(Alien(Vector2(Calcul().rand(-50, 500), 30)))
+        super().__init__(Alien(Vector2(Calcul().rand(10, 1410), 30)))
 
     def __call__(self):
         EntityManager().aliens[self.get_entity().get_id()] = self.get_entity()
