@@ -1,6 +1,7 @@
 from lib.manager.EntityManager import EntityManager
 from lib.manager.TaskManager import TaskManager
 from src.entity.Player import Player
+from src.tasks.AlienSpawnTask import AlienSpawnTask
 import pygame
 
 class Game():
@@ -11,6 +12,7 @@ class Game():
         self.player = Player()
         self.running = True
         self.create_window()
+        self.start_tasks()
 
     def is_running(self):
         return self.running
@@ -43,6 +45,10 @@ class Game():
 
     def update_screen(self):
         pygame.display.flip()
+
+    def start_tasks(self):
+        task = AlienSpawnTask()
+        task.on_run()
 
     def update_tasks(self):
         self.task_manager.do_tasks()
