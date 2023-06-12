@@ -11,7 +11,7 @@ class Player(Entity):
         self.set_position(Vector2(650, 650))
         self.health = 100
         self.damage = 20
-        self.velocity = 20
+        self.velocity = 1
 
     def get_health(self):
         return self.health

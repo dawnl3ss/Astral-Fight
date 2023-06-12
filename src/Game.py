@@ -9,6 +9,7 @@ class Game():
     def __init__(self):
         self.entity_manager = EntityManager()
         self.task_manager = TaskManager()
+        self.pressed_keys = {}
         self.player = Player()
         self.running = True
         self.create_window()
