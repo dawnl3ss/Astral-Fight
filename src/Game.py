@@ -4,6 +4,9 @@ from src.entity.Player import Player
 from src.tasks.AlienSpawnTask import AlienSpawnTask
 import pygame
 
+from src.tasks.EntityCollideTask import EntityCollideTask
+
+
 class Game():
 
     def __init__(self):
@@ -48,8 +51,10 @@ class Game():
         pygame.display.flip()
 
     def start_tasks(self):
-        task = AlienSpawnTask()
-        task.on_run()
+        alien_spawn = AlienSpawnTask()
+        entity_collide = EntityCollideTask()
+        alien_spawn.on_run()
+        entity_collide.on_run()
 
     def update_tasks(self):
         self.task_manager.do_tasks()
